@@ -1,5 +1,10 @@
 #Problem Set 1 #1
+#Name: Margaret Retzinger
+#Collaborators: Damien Retzinger
+#Time: 02:30
+#
 #Computes 1000th prime number
+
 currentNumber = 3
 primes = [2]
 n = 1000
