@@ -55,7 +55,7 @@ def squareRootBi(x, epsilon) :
     assert x >=0, 'x must be non-negaive, not ' + str(x) #assert continues if true, or stops with the statement
     assert epsilon > 0, 'epsilon must be positive, not ' + str(epsilon)
     low = 0
-    high = x
+    high = max(x, 1.0)#incase x is less than one, instead of high = x
     guess = (low + high) / 2.0
     ctr = 1
     while abs(guess**2 - x) > epsilon and ctr <= 100 :
@@ -69,3 +69,45 @@ def squareRootBi(x, epsilon) :
     assert ctr <= 100, 'Iteration count exceeded'
     print('Bi method. Num. interations: ', ctr, 'Estimate: ', guess)
     return guess
+
+#print(squareRootBi(0.25, 0.0001)) #This gets you an assertionError: Iteration count exceeded until we made change to line 58 high =
+
+#print(squareRootBi(144, 0.0001)) 
+
+
+def squareRootNR(x, epsilon) : #Newton-Raphson method
+    #assumes x >= 0 and epislon >0
+    #return y so that y*y is within epsilon of x
+    assert x >=0, 'x must be non-negaive, not ' + str(x) #assert continues if true, or stops with the statement
+    assert epsilon > 0, 'epsilon must be positive, not ' + str(epsilon)
+    x = float(x)
+    guess = x / 2.0
+    diff = guess**2 - x
+    ctr = 1
+    while abs(diff) > epsilon and ctr <= 100 :
+        #print 'Error ', diff,'guess: ', guess
+        guess = guess - diff/(2.0*guess)
+        diff = guess**2 - x
+        ctr += 1
+    assert ctr <= 100, 'Iteration count exceeded'
+    print('NR method. Num. interations: ', ctr, 'Estimate: ', guess)
+    return guess
+
+unis = []
+lista = ['a', 'b']
+listb = ['aa', 'bb']
+unis.append(lista)
+unis.append(listb)
+print(unis) #list of lists
+
+#concat flattens
+unis = []
+lista = ['a', 'b']
+listb = ['aa', 'bb']
+unis = lista + listb
+print(unis)
+
+#Dictionaries
+EtoF = {'one': 'un', 'soccer': 'football'}
+#cannot print an index of a dictionary
+print(EtoF)
