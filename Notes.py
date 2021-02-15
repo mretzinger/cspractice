@@ -35,7 +35,7 @@ def add(x = 0):
         x = x + 1
         add(x)
 
-print(fib(24))
+#print(fib(24))
 
 
 #floating point rouding errors
@@ -98,16 +98,92 @@ lista = ['a', 'b']
 listb = ['aa', 'bb']
 unis.append(lista)
 unis.append(listb)
-print(unis) #list of lists
+#print(unis) #list of lists
 
 #concat flattens
 unis = []
 lista = ['a', 'b']
 listb = ['aa', 'bb']
 unis = lista + listb
-print(unis)
+#print(unis)
 
 #Dictionaries
 EtoF = {'one': 'un', 'soccer': 'football'}
 #cannot print an index of a dictionary
-print(EtoF)
+#print(EtoF)
+
+
+
+#Lecture 8
+
+#goes through loop b times
+def ex1(a,b) :
+    ans = 1
+    while (b > 0) :
+        ans *= a
+        b -= 1
+    return ans
+
+#Does the same thing as ex1(), but with recursion. Still linear time to solve.
+def ex2(a,b) :
+    if b == 1 :
+        return a
+    else : return a*ex2(a, b-1)
+
+#Also the same answer as previous, 
+def ex3(a,b) :
+    if b == 1 :
+        return a 
+    if (b%2)*2 == b :
+        return ex3(a*a, b/2)
+    else : return a*ex3(a,b-1)
+
+
+#print(ex3(3,5))
+
+#linear
+def search1(s, e) : 
+    answer = None
+    i = 0
+    numCompares = 0
+    while i < len(s) and answer == None :
+        numCompares += 1
+        if e == s[i] :
+            answer = True
+        elif e < s[i] :
+            answer = False
+        i += 1
+    print(answer, numCompares)
+
+#binary search logarithmic
+def bsearch(s, e, first, last, calls) : 
+    print(first, last, calls)
+    if(last - first) < 2 :
+        return s[first] == e or s[last]
+    mid = first + (last - first) // 2
+    if s[mid] == e :
+        return True
+    if s[mid] > e :
+        return bsearch(s, e, first, mid - 1, calls)
+    return bsearch(s, e, mid + 1, last, calls + 1)
+
+def search(s, e) : 
+    print(bsearch(s, e, 0, len(s) - 1, 1))
+    print("done")
+
+#print(search(range(1000), 9400))
+
+
+
+#Bubble sort
+def bubbleSort(L) :
+    for j in range(len(L)) :
+        for i in range(len(L) - 1) :
+            if L[i] > L[i + 1] :
+                temp = L[i]
+                L[i] = L[i+1]
+                L[i+1] = temp
+        print(L)
+
+print(bubbleSort([1,3,4,5,2,6]))
+
