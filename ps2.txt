@@ -29,3 +29,18 @@ possible to buy any number of McNuggets >= x, given that McNuggets come in 6, 9 
 packs.
 
 
+Answer: Since we have x through x+5, we can compute "x + 6" by adding 6 to x, "x + 7" by adding 6 to "x + 1".
+
+We can apply the same concept in a similar manner, as outlined in the table below, 
+
+x+6 = x+6
+x+7 = x+1+6
+x+8 = x+2+6
+x+9 = x+3+6
+x+10 = x+4+6
+x+11 = x+5+6
+x+12 = x+6+6 = x +2*6
+...
+
+it is apparent that any number greater than x+5 can be derived via the formula `d + 6n`, where n is any integer >= 0 and d is an element of {x,...,x+5}.
+Additionally, from the theorem we were given {x,...,x+5} and so it follows that we can generate any number >= x.
