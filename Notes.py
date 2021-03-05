@@ -185,5 +185,83 @@ def bubbleSort(L) :
                 L[i+1] = temp
         print(L)
 
-print(bubbleSort([1,3,4,5,2,6]))
+#print(bubbleSort([1,3,4,5,2,6]))
+
+
+#Merge sort
+def mergeSort(L) :
+    print(L)
+    if len(L) < 2 :
+        return L[:]
+    else : 
+        middle = len(L) // 2
+        left = mergeSort(L[:middle])
+        right = mergeSort(L[middle:])
+        together = merge(left, right)
+        print('merged', together)
+        return together
+
+
+def merge(left, right) :
+    result = []
+    i, j = 0,0
+    while i < len(left) and j < len(right) :
+        if left[i] <= right[j] :
+            result.append(left[i])
+            i = i + 1
+        else : 
+            result.append(right[j])
+            j = j + 1
+    while (i < len(left)) :
+        result.append(left[i])
+        i = i + 1
+    while (j < len(right)) :
+        result.append(right[j])
+        j = j + 1
+    return result
+
+
+#print(mergeSort([1,10,123,34,5, 73, 43, 999,33,6,48]))
+
+#Hashing
+def create(smallest, largest) :
+    intSet = []
+    for i in range(smallest, largest + 1) : intSet.append(None)
+    return intSet
+
+def insert(intSet, e) :
+    intSet[e] = 1
+
+def member(intSet, e) :
+     return intSet [e] == 1
+
+def hashChar(c) :
+    return ord(c)
+
+def cSetCreate() :
+    cSet = []
+    for i in range(0,255) : cSet.append(None)
+    return cSet
+
+def cSetInsert(cSet, e) :
+    cSet[hashChar(e)] = 1
+
+def cSetMember(cSet, e) :
+    return cSet[hashChar(e)] == 1
+
+print(ord('7'))
+
+#Handling exceptions
+
+#try-block
+def readFloat(requestMsg, errorMsg) :
+    while True :
+        val = input(requestMsg)
+        try :
+            val = float(val)
+            return val
+        except : 
+            print(errorMsg)
+
+#print(readFloat("Enter float: ", "Not a float."))
 
