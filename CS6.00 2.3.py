@@ -19,30 +19,27 @@
 
 
 def nuggets() :
-    a = 0
-    b = 0
-    c = 0
     n=1
+    largestNotPurchasable = n
+
     while n < 60 : 
-        if n == 6*a + 9*b +20*c :
-            print('Largest number of McNuggets that cannot be bought in exact quantity: ', n)
+        if(notPurchasable(n)):
+            largestNotPurchasable = n
+        n = n + 1
 
+    return largestNotPurchasable
 
+def notPurchasable(n): 
         for a in range(0,10) :
-            #if n == 6*a + 9*b +20*c :
-            #print('test', b) #n, ' : ', a, b, c)
-            for b in range(0,10) :
-                if n == 6*a + 9*b + 20*c :
-                    print('works') #n, ' : ', a, b, c)
-                if n == 6*a + 9*b +20*c  : 
-                    print('success', a, b, 6*a + 9*b + 20*c)
-        print('Largest number of McNuggets that cannot be bought in exact quantity: ', n)
-
-        # for a in range(1,100) : 
-        #     for b in range(1,100) :
-        #         for c in range(1,100) :
+            for b in range(0,6) :
+                for c in range (0,2) :  
+                    # If there is a solution, then the number of nuggets "n" is purchasable.
+                    if n == 6*a + 9*b + 20*c : 
+                        # We need to move on to the next number "n".
+                        return False
                     
+        return True
 
-print(nuggets())
+print('Largest number of McNuggets that cannot be bought in exact quantity: ', nuggets())
 
 
